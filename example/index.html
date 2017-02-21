@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Chart.js Events Plugin</title>
+	<script type="text/javascript" src="customChart.min.js"></script>
+	<script src="../src/index.js"></script>
+
+	<style>
+		#chartWrapper {
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div id="chartWrapper">
+		<canvas id="myChart" width="400" height="400"></canvas>
+	</div>
+	<script>
+    var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: [
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          randomScalingFactor(),
+          ],
+          label: 'Dataset 1'
+        }],
+        labels: [
+        "Red",
+        "Orange",
+        "Yellow",
+        "Green",
+        "Blue"
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    };
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var chart = new Chart(ctx, config);
+
+    chart.on('tooltips','tooltipClosed', function(element) {
+      console.log('we were closed', element)
+    });
+    chart.on('tooltips','tooltipOpened', function(element) {
+      console.log('we were opened', element)
+    });
+    chart.on('tooltips','tooltipChanged', function(element) {
+      console.log('we were updated', element)
+    });
+  </script>
+</body>
+</html>
