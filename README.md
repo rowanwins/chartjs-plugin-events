@@ -1,6 +1,6 @@
 # Chartjs-plugin-events
 Simple methods for watching events from chartjs
-
+ [DEMO](https://rowanwins.github.io/chartjs-plugin-events/example/)
 ## Installation
 ```bash
 npm install chart.js --save
